@@ -11,6 +11,10 @@ public class recurrsion {
 //        int ans5=rev1(1342);
         rev1(1342);
         System.out.println(sum);
+        System.out.println(rev2(13234));
+        System.out.println(palindrome(12321));
+        System.out.println(palindrome(12323));
+        System.out.println(count(1020305));
     }
     public static int  sum1(int n){
         if(n==1){
@@ -65,6 +69,41 @@ public static int rev(int n) {
         sum=sum*10+n%10;
         rev1(n/10);
 
+    }
+    static int rev2(int n) {
+
+        int digits = (int)(Math.log10(n)) + 1;
+        return helper(n, digits);
+    }
+
+    private static int helper(int n, int digits) {
+        if (n%10 == n) {
+            return n;
+        }
+        int rem = n % 10;
+        return rem * (int)(Math.pow(10, digits-1)) + helper(n/10, digits-1);
+    }
+    public static boolean palindrome(int n){
+        if(n==rev2(n)){
+            return true;
+        }
+        return false;
+    }
+    static int count(int n) {
+        return helper1(n, 0);
+    }
+
+
+    private static int helper1(int n, int c) {
+        if (n == 0) {
+            return c;
+        }
+
+        int rem = n % 10;
+        if (rem == 0) {
+            return helper1(n/10, c+1);
+        }
+        return helper1(n/10, c);
     }
 
 }
