@@ -105,5 +105,19 @@ public static int rev(int n) {
         }
         return helper1(n/10, c);
     }
+    public int numberOfSteps(int num) {
+        return helper2(num, 0);
+    }
+
+    private int helper2(int num, int steps) {
+        if (num == 0) {
+            return steps;
+        }
+
+        if (num % 2 == 0) {
+            return helper2(num/2, steps+1);
+        }
+        return helper2(num-1, steps+1);
+    }
 
 }
